@@ -82,27 +82,6 @@ con.close()
 
 
 
-con = sql.connect('attendence_sys.db',detect_types=sql.PARSE_DECLTYPES)
-
-query = """CREATE TABLE ____(Sid TEXT,
-                                        date TEXT,
-                                        attendence TEXT DEFAULT 'A',
-                                        FOREIGN KEY (Sid)
-                                        REFERENCES student_details(Sid)
-                                        ON DELETE CASCADE
-                                        ON UPDATE CASCADE)"""
-con.execute(query)
-con.commit()
-con.close()
-
-
-
-
-
-
-
-
-
 
 
 
