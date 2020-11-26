@@ -82,7 +82,7 @@ class Student:
                                                 Spassword) values(?,?,?,?,?)"""
         cur.execute(query,(Sid,Sname,Sclass_id,Sphone_no,Spassword))
         
-        query = """INSERT INTO student_face_data(Sid,arr,) VALUES(?,?)"""
+        query = """INSERT INTO student_face_data(Sid,arr) VALUES(?,?)"""
         
         cur.execute(query,(Sid,emb))
         
