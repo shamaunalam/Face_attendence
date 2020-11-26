@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>Home</class>
+ <widget class="QMainWindow" name="Home">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>516</width>
-    <height>420</height>
+    <width>928</width>
+    <height>721</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Home</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>true</bool>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(85, 85, 255);</string>
@@ -20,29 +23,41 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>130</y>
-      <width>131</width>
+      <x>420</x>
+      <y>320</y>
+      <width>260</width>
       <height>141</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:transparent</string>
     </property>
     <property name="text">
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>../images/face.jpg</pixmap>
+     <pixmap>static/professional-development-tools-for-teachers-removebg-preview.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
     </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="margin">
+     <number>-1</number>
+    </property>
+    <property name="indent">
+     <number>0</number>
+    </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="studentLoginBut">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>300</y>
-      <width>131</width>
-      <height>23</height>
+      <x>220</x>
+      <y>470</y>
+      <width>141</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="font">
@@ -62,27 +77,30 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>350</x>
-      <y>120</y>
-      <width>131</width>
+      <x>140</x>
+      <y>330</y>
+      <width>231</width>
       <height>141</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:transparent</string>
     </property>
     <property name="text">
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>../images/faculty.png</pixmap>
+     <pixmap>static/what-to-do-when-a-student-is-failing-190715-removebg-preview.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="facultyLoginBut">
     <property name="geometry">
      <rect>
-      <x>350</x>
-      <y>290</y>
+      <x>530</x>
+      <y>460</y>
       <width>131</width>
       <height>23</height>
      </rect>
@@ -101,11 +119,11 @@
      <string>Faculty Login</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="adminLoginBut">
     <property name="geometry">
      <rect>
-      <x>350</x>
-      <y>330</y>
+      <x>530</x>
+      <y>500</y>
       <width>131</width>
       <height>23</height>
      </rect>
@@ -122,6 +140,66 @@
     </property>
     <property name="text">
      <string>Admin Login</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>110</y>
+      <width>901</width>
+      <height>271</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Monotype Corsiva</family>
+      <pointsize>30</pointsize>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
+      <underline>true</underline>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:transparent;color:yellow</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="lineWidth">
+     <number>0</number>
+    </property>
+    <property name="text">
+     <string>Face recognition based attendence management system</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>60</y>
+      <width>151</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:transparent</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>static/untitled-removebg-preview.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>
