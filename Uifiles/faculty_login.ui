@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>929</width>
-    <height>721</height>
+    <width>1166</width>
+    <height>867</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,9 +20,9 @@
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>220</y>
-      <width>321</width>
+      <x>70</x>
+      <y>310</y>
+      <width>391</width>
       <height>271</height>
      </rect>
     </property>
@@ -39,7 +39,7 @@
           </font>
          </property>
          <property name="text">
-          <string>Employee Id :</string>
+          <string>Phone Number</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -47,7 +47,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="empIdEnter">
+        <widget class="QLineEdit" name="phoneEnter">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
@@ -134,8 +134,8 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>120</y>
+      <x>310</x>
+      <y>330</y>
       <width>901</width>
       <height>541</height>
      </rect>

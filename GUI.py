@@ -6,7 +6,7 @@ Created on Thu Nov 26 16:12:49 2020
 """
 
 from PyQt5 import  QtWidgets,uic
-from dbms import Student
+from dbms import Student,Employee
 
 def gotostudentlogin():
     homePage.close()
@@ -14,6 +14,8 @@ def gotostudentlogin():
 
 def gotofacultylogin():
     homePage.close()
+    facultyLoginPage.phoneEnter.setText('')
+    facultyLoginPage.passwordEnter.setText('')
     facultyLoginPage.show()
 
 def backfromfaclogin():
@@ -25,10 +27,23 @@ def backfromstudentlogin():
     homePage.show()
 
 def gotofacultydashboard():
-    facultyLoginPage.close()
-    facultyDashboard.show()    
+    
+    Ephone = facultyLoginPage.phoneEnter.text()
+    Epassword = facultyLoginPage.passwordEnter.text()
+    
+    e = Employee()
+    ret = e.fetch_faculty(Ephone,Epassword)
+    
+    if ret:
+        facultyLoginPage.close()
+        facultyDashboard.show()
+    else:
+        facultyLoginPage.phoneEnter.setText('')
+        facultyLoginPage.passwordEnter.setText('')
 
 def backtofacultylogin():
+    facultyLoginPage.phoneEnter.setText('')
+    facultyLoginPage.passwordEnter.setText('')
     facultyDashboard.close()
     facultyLoginPage.show()
 
