@@ -52,6 +52,15 @@ def capturedata():
     s = Student()
     s.register(URL, Sid, Sname, Sclass_id, Sphone_no, Spassword)
     
+def gotostudentdashboard():
+    studentLoginPage.close()
+    studentDashboard.show()
+    
+
+def studentlogout():
+    studentDashboard.close()
+    studentLoginPage.show()
+
 
 app = QtWidgets.QApplication([])
 
@@ -60,6 +69,7 @@ studentLoginPage = uic.loadUi('Uifiles/student_login.ui')
 facultyLoginPage = uic.loadUi("Uifiles/faculty_login.ui")
 facultyDashboard = uic.loadUi("Uifiles/faculty_dashboard.ui")
 studentRegisterPage = uic.loadUi("Uifiles/student_register.ui")
+studentDashboard = uic.loadUi("Uifiles/studentDashboard.ui")
 
 homePage.show()
 homePage.studentLoginBut.clicked.connect(gotostudentlogin)
@@ -70,6 +80,9 @@ facultyLoginPage.loginBut.clicked.connect(gotofacultydashboard)
 
 
 studentLoginPage.backBut.clicked.connect(backfromstudentlogin)
+studentLoginPage.loginBut.clicked.connect(gotostudentdashboard)
+
+studentDashboard.logoutBut.clicked.connect(studentlogout)
 
 facultyDashboard.backBut.clicked.connect(backtofacultylogin)
 facultyDashboard.registerStudentBut.clicked.connect(gotostudentregister)
@@ -77,13 +90,3 @@ facultyDashboard.registerStudentBut.clicked.connect(gotostudentregister)
 studentRegisterPage.backBut.clicked.connect(backfromstudentregister)
 studentRegisterPage.captureBut.clicked.connect(capturedata)
 app.exec()
-
-
-
-
-
-
-
-
-
-

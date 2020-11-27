@@ -32,8 +32,6 @@ def preprocess(img):
     img = preprocess_input(img,version=2)
     return img
 
-
-
 def adapt_array(arr):
     out = io.BytesIO()
     np.save(out, arr)
