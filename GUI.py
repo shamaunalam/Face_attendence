@@ -6,6 +6,7 @@ Created on Thu Nov 26 16:12:49 2020
 """
 
 from PyQt5 import  QtWidgets,uic
+import sqlite3 as sql
 from dbms import Student
 
 def gotostudentlogin():
@@ -53,13 +54,27 @@ def capturedata():
     s.register(URL, Sid, Sname, Sclass_id, Sphone_no, Spassword)
     
 def gotostudentdashboard():
-    studentLoginPage.close()
-    studentDashboard.show()
+    
+    phone = studentLoginPage.phoneEnter.text()
+    password = studentLoginPage.passwordEnter.text()
+    
+    s = Student()
+    ret = s.fetch_student(phone,password)
+    if ret is not False:        
+        studentLoginPage.close()
+        studentDashboard.welcomeLabel.setText('Welcome '+ret['Sname'])
+        studentDashboard.show()
     
 
 def studentlogout():
     studentDashboard.close()
     studentLoginPage.show()
+
+def viewattendence():
+    start = studentDashboard.startDate.text()
+    stop = studentDashboard.endDate.text()
+    pass
+
 
 
 app = QtWidgets.QApplication([])
@@ -70,6 +85,8 @@ facultyLoginPage = uic.loadUi("Uifiles/faculty_login.ui")
 facultyDashboard = uic.loadUi("Uifiles/faculty_dashboard.ui")
 studentRegisterPage = uic.loadUi("Uifiles/student_register.ui")
 studentDashboard = uic.loadUi("Uifiles/studentDashboard.ui")
+viewAttendence = uic.loadUi('Uifiles/view_attendence.ui')
+
 
 homePage.show()
 homePage.studentLoginBut.clicked.connect(gotostudentlogin)
@@ -83,6 +100,7 @@ studentLoginPage.backBut.clicked.connect(backfromstudentlogin)
 studentLoginPage.loginBut.clicked.connect(gotostudentdashboard)
 
 studentDashboard.logoutBut.clicked.connect(studentlogout)
+studentDashboard.viewBut.clicked.connect(viewattendence)
 
 facultyDashboard.backBut.clicked.connect(backtofacultylogin)
 facultyDashboard.registerStudentBut.clicked.connect(gotostudentregister)

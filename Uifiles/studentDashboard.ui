@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>928</width>
-    <height>724</height>
+    <width>924</width>
+    <height>717</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Student Login</string>
+   <string>Student Dashboard</string>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color:rgb(85, 85, 255)</string>

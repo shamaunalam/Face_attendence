@@ -88,6 +88,20 @@ class Student:
         
         cur.commit()
         cur.close()
+        
+    def fetch_student(self,Sphone_no,Spassword):
+            cur = sql.connect('attendence_sys.db',detect_types=sql.PARSE_DECLTYPES)
+            query = """SELECT * FROM student_details WHERE Sphone_no=? AND Spassword=?"""
+            
+            ret = cur.execute(query,(Sphone_no,Spassword))
+            ret = ret.fetchall()[0]
+            
+            if len(ret)>0:
+                return {'Sid':ret[0],'Sname':ret[1],'Sclass':ret[2],
+                        'Sphone':ret[3]}
+            else:
+                return False
+            cur.close()
 
 
 
