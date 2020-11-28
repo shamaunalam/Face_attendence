@@ -78,14 +78,14 @@ con.execute(query)
 con.commit()
 con.close()
 
+con = sql.connect('attendence_sys.db',detect_types=sql.PARSE_DECLTYPES)
 
-
-
-
-
-
-
-
-
-
+query = """CREATE TABLE employee_details(Eid TEXT PRIMARY KEY,
+                                        Ename TEXT,
+                                        Ephone INTEGER,
+                                        Epassword TEXT,
+                                        Etype TEXT DEFAULT 'Faculty')"""
+con.execute(query)
+con.commit()
+con.close()
 

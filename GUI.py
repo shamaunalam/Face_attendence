@@ -6,8 +6,12 @@ Created on Thu Nov 26 16:12:49 2020
 """
 
 from PyQt5 import  QtWidgets,uic
+<<<<<<< HEAD
 import sqlite3 as sql
 from dbms import Student
+=======
+from dbms import Student,Employee
+>>>>>>> fe09c0d5196c0dd2ff4950e5619d338a97badf1b
 
 def gotostudentlogin():
     homePage.close()
@@ -15,6 +19,8 @@ def gotostudentlogin():
 
 def gotofacultylogin():
     homePage.close()
+    facultyLoginPage.phoneEnter.setText('')
+    facultyLoginPage.passwordEnter.setText('')
     facultyLoginPage.show()
 
 def backfromfaclogin():
@@ -26,10 +32,23 @@ def backfromstudentlogin():
     homePage.show()
 
 def gotofacultydashboard():
-    facultyLoginPage.close()
-    facultyDashboard.show()    
+    
+    Ephone = facultyLoginPage.phoneEnter.text()
+    Epassword = facultyLoginPage.passwordEnter.text()
+    
+    e = Employee()
+    ret = e.fetch_faculty(Ephone,Epassword)
+    
+    if ret:
+        facultyLoginPage.close()
+        facultyDashboard.show()
+    else:
+        facultyLoginPage.phoneEnter.setText('')
+        facultyLoginPage.passwordEnter.setText('')
 
 def backtofacultylogin():
+    facultyLoginPage.phoneEnter.setText('')
+    facultyLoginPage.passwordEnter.setText('')
     facultyDashboard.close()
     facultyLoginPage.show()
 

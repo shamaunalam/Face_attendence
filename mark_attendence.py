@@ -19,7 +19,11 @@ from scipy.spatial.distance import cosine
 model = VGGFace(model='resnet50', include_top=False, input_shape=(224, 224, 3), pooling='avg')
 face_data = "haarcascade_frontalface_default.xml"
 cascade = cv2.CascadeClassifier(face_data)
+<<<<<<< HEAD
 URL =  "http://25.163.251.138:8080/shot.jpg"
+=======
+URL =  "http://192.168.43.1:8080/shot.jpg"
+>>>>>>> fe09c0d5196c0dd2ff4950e5619d338a97badf1b
 
 def preprocess(img):
         
