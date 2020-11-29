@@ -15,15 +15,13 @@ from keras_vggface.utils import preprocess_input
 import io
 import urllib
 from scipy.spatial.distance import cosine
+from datetime import datetime,date
 
 model = VGGFace(model='resnet50', include_top=False, input_shape=(224, 224, 3), pooling='avg')
 face_data = "haarcascade_frontalface_default.xml"
 cascade = cv2.CascadeClassifier(face_data)
-<<<<<<< HEAD
+
 URL =  "http://25.163.251.138:8080/shot.jpg"
-=======
-URL =  "http://192.168.43.1:8080/shot.jpg"
->>>>>>> fe09c0d5196c0dd2ff4950e5619d338a97badf1b
 
 def preprocess(img):
         
@@ -76,25 +74,30 @@ def getname(Sid):
     return res[0]
 
 
+
 def mark_attendence(Sid):
     
+    dte = date.today().strftime("%d-%m-%y")
     con = sql.connect('attendence_sys.db')
     cur = con.cursor()
-    for i in cur.execute("SELECT DATE('now')"):
-        date = i[0]
-    
+    cur.execute("PRAGMA foreign_keys=ON")
     query = """SELECT Sid FROM student_attendence WHERE date=?"""
-    ret = cur.execute(query,(date,))
+    ret = cur.execute(query,(dte,))
     ret = ret.fetchall()
     ret = [x[0] for x in ret]
     if Sid in ret:
         con.close()
         return False
     else:
-        query="""INSERT INTO student_attendence(Sid,date,attendence) VALUES(?,?,?)"""
-        cur.execute(query,(Sid,date,'P'))
-        con.close()
-        return True
+        try:
+            query="""INSERT INTO student_attendence(date,Sid) VALUES(?,?)"""
+            cur.execute(query,(dte,Sid))
+            con.commit()
+            con.close()
+            return True
+        except:
+            con.close()
+            return False
 
 
 while True:
@@ -132,5 +135,7 @@ while True:
     if cv2.waitKey(1)==ord('q'):
         break
 cv2.destroyAllWindows()
+
+
 
 

@@ -13,6 +13,8 @@ from keras_vggface.vggface import VGGFace
 from keras_vggface.utils import preprocess_input
 import io
 import urllib
+from datetime import date,timedelta,datetime
+
 
 model = VGGFace(model='resnet50', include_top=False, input_shape=(224, 224, 3), pooling='avg')
 face_data = "haarcascade_frontalface_default.xml"
@@ -74,20 +76,22 @@ class Student:
         
         emb = model.predict(self.preprocess(face_img))
         
-        cur = sql.connect('attendence_sys.db',detect_types=sql.PARSE_DECLTYPES)
+        con = sql.connect('attendence_sys.db',detect_types=sql.PARSE_DECLTYPES)
+        cur = con.cursor()
+        cur.execute("PRAGMA foreign_keys=ON")
         query = """INSERT INTO student_details(Sid,
                                                 Sname,
                                                 Sclass_id,
                                                 Sphone_no,
                                                 Spassword) values(?,?,?,?,?)"""
-        cur.execute(query,(Sid,Sname,Sclass_id,Sphone_no,Spassword))
+        con.execute(query,(Sid,Sname,Sclass_id,Sphone_no,Spassword))
         
         query = """INSERT INTO student_face_data(Sid,arr) VALUES(?,?)"""
         
-        cur.execute(query,(Sid,emb))
+        con.execute(query,(Sid,emb))
         
-        cur.commit()
-        cur.close()
+        con.commit()
+        con.close()
         
     def fetch_student(self,Sphone_no,Spassword):
             cur = sql.connect('attendence_sys.db',detect_types=sql.PARSE_DECLTYPES)
@@ -102,7 +106,35 @@ class Student:
             else:
                 return False
             cur.close()
-
+            
+    
+    def fetch_student_attendence(self,Sid,startdate,enddate):
+        con = sql.connect('attendence_sys.db',detect_types=sql.PARSE_DECLTYPES)
+        ret = con.execute("""SELECT Sname FROM student_details WHERE Sid=?""",(Sid,))
+        ret=ret.fetchall()
+        if len(ret)>0:
+            atten = {"Roll":Sid,"Name":ret[0][0]}
+            
+        daterange = []
+        start = datetime.strptime(startdate,"%d-%m-%y")
+        end = datetime.strptime(enddate,"%d-%m-%y")
+        step = timedelta(days=1)
+        while start<=end:
+            daterange.append(start.strftime("%d-%m-%y"))
+            start = start + step
+        for i in daterange:
+            query = """SELECT Sid FROM student_attendence WHERE date=?"""
+            ret = con.execute(query,(i,))
+            ret = ret.fetchall()
+            ret = [x[0] for x in ret]
+            if Sid in ret:
+                atten.update({i:"P"})
+            else:
+                atten.update({i:"A"})
+        con.close()
+        return atten
+                
+        
 
 class Employee:
     
@@ -130,28 +162,5 @@ class Employee:
         else:
             return False
         con.close()
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

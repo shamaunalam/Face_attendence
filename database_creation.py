@@ -67,13 +67,7 @@ Student attendence
 
 con = sql.connect('attendence_sys.db',detect_types=sql.PARSE_DECLTYPES)
 
-query = """CREATE TABLE student_attendence(Sid TEXT,
-                                        date TEXT,
-                                        attendence TEXT DEFAULT 'A',
-                                        FOREIGN KEY (Sid)
-                                        REFERENCES student_details(Sid)
-                                        ON DELETE CASCADE
-                                        ON UPDATE CASCADE)"""
+query = """CREATE TABLE student_attendence(date TEXT,Sid TEXT NOT NULL, FOREIGN KEY(Sid) REFERENCES student_details(Sid) ON DELETE CASCADE ON UPDATE CASCADE);"""
 con.execute(query)
 con.commit()
 con.close()
