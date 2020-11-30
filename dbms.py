@@ -98,14 +98,18 @@ class Student:
             query = """SELECT * FROM student_details WHERE Sphone_no=? AND Spassword=?"""
             
             ret = cur.execute(query,(Sphone_no,Spassword))
-            ret = ret.fetchall()[0]
-            
-            if len(ret)>0:
-                return {'Sid':ret[0],'Sname':ret[1],'Sclass':ret[2],
-                        'Sphone':ret[3]}
-            else:
+            try:
+                
+                ret = ret.fetchall()[0]
+                
+                if len(ret)>0:
+                    return {'Sid':ret[0],'Sname':ret[1],'Sclass':ret[2],
+                            'Sphone':ret[3]}
+                else:
+                    return False
+                cur.close()
+            except:
                 return False
-            cur.close()
             
     
     def fetch_student_attendence(self,Sid,startdate,enddate):
@@ -113,7 +117,7 @@ class Student:
         ret = con.execute("""SELECT Sname FROM student_details WHERE Sid=?""",(Sid,))
         ret=ret.fetchall()
         if len(ret)>0:
-            atten = {"Roll":Sid,"Name":ret[0][0]}
+            atten = {"Roll":[Sid],"Name":[ret[0][0]]}
             
         daterange = []
         start = datetime.strptime(startdate,"%d-%m-%y")
@@ -128,9 +132,9 @@ class Student:
             ret = ret.fetchall()
             ret = [x[0] for x in ret]
             if Sid in ret:
-                atten.update({i:"P"})
+                atten.update({i:["P"]})
             else:
-                atten.update({i:"A"})
+                atten.update({i:["A"]})
         con.close()
         return atten
                 
@@ -162,5 +166,8 @@ class Employee:
         else:
             return False
         con.close()
+
+
+
 
 

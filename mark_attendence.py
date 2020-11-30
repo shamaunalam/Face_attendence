@@ -5,7 +5,6 @@ Created on Thu Nov 26 17:13:49 2020
 @author: AI & ML
 """
 
-
 import sqlite3 as sql
 import cv2
 import numpy as np

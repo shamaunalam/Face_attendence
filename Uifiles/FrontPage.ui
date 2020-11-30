@@ -6,15 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>928</width>
-    <height>721</height>
+    <width>1157</width>
+    <height>844</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Home</string>
   </property>
   <property name="autoFillBackground">
-   <bool>true</bool>
+   <bool>false</bool>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(85, 85, 255);</string>
@@ -23,8 +23,8 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>420</x>
-      <y>320</y>
+      <x>540</x>
+      <y>430</y>
       <width>260</width>
       <height>141</height>
      </rect>
@@ -54,8 +54,8 @@
    <widget class="QPushButton" name="studentLoginBut">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>470</y>
+      <x>340</x>
+      <y>580</y>
       <width>141</width>
       <height>21</height>
      </rect>
@@ -77,8 +77,8 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>330</y>
+      <x>260</x>
+      <y>440</y>
       <width>231</width>
       <height>141</height>
      </rect>
@@ -99,8 +99,8 @@
    <widget class="QPushButton" name="facultyLoginBut">
     <property name="geometry">
      <rect>
-      <x>530</x>
-      <y>460</y>
+      <x>650</x>
+      <y>570</y>
       <width>131</width>
       <height>23</height>
      </rect>
@@ -122,8 +122,8 @@
    <widget class="QPushButton" name="adminLoginBut">
     <property name="geometry">
      <rect>
-      <x>530</x>
-      <y>500</y>
+      <x>650</x>
+      <y>610</y>
       <width>131</width>
       <height>23</height>
      </rect>
@@ -145,9 +145,9 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>110</y>
-      <width>901</width>
+      <x>80</x>
+      <y>220</y>
+      <width>1011</width>
       <height>271</height>
      </rect>
     </property>
@@ -183,8 +183,8 @@
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>370</x>
-      <y>60</y>
+      <x>490</x>
+      <y>170</y>
       <width>151</width>
       <height>161</height>
      </rect>
