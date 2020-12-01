@@ -13,7 +13,7 @@ from keras_vggface.vggface import VGGFace
 from keras_vggface.utils import preprocess_input
 import io
 import urllib
-from datetime import date,timedelta,datetime
+from datetime import timedelta,datetime
 
 
 model = VGGFace(model='resnet50', include_top=False, input_shape=(224, 224, 3), pooling='avg')
@@ -137,8 +137,7 @@ class Student:
                 atten.update({i:["A"]})
         con.close()
         return atten
-                
-        
+
 
 class Employee:
     
@@ -166,8 +165,5 @@ class Employee:
         else:
             return False
         con.close()
-
-
-
 
 

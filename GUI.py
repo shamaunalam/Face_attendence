@@ -32,7 +32,7 @@ def backfromstudentlogin():
     studentLoginPage.close()
     homePage.show()
 
-def gotofacultydashboard():
+def gotoemployeedashboard():
     
     Ephone = facultyLoginPage.phoneEnter.text()
     Epassword = facultyLoginPage.passwordEnter.text()
@@ -40,7 +40,7 @@ def gotofacultydashboard():
     e = Employee()
     ret = e.fetch_faculty(Ephone,Epassword)
     
-    if ret:
+    if ret['Etype']=='Faculty':
         facultyLoginPage.close()
         facultyDashboard.show()
     else:
@@ -152,7 +152,7 @@ homePage.studentLoginBut.clicked.connect(gotostudentlogin)
 homePage.facultyLoginBut.clicked.connect(gotofacultylogin)
 
 facultyLoginPage.backBut.clicked.connect(backfromfaclogin)
-facultyLoginPage.loginBut.clicked.connect(gotofacultydashboard)
+facultyLoginPage.loginBut.clicked.connect(gotoemployeedashboard)
 
 
 studentLoginPage.backBut.clicked.connect(backfromstudentlogin)
