@@ -20,7 +20,7 @@ model = VGGFace(model='resnet50', include_top=False, input_shape=(224, 224, 3), 
 face_data = "haarcascade_frontalface_default.xml"
 cascade = cv2.CascadeClassifier(face_data)
 
-URL =  "http://25.163.251.138:8080/shot.jpg"
+URL =  "http://192.168.43.1:8080/shot.jpg"
 
 def preprocess(img):
         
@@ -104,6 +104,8 @@ while True:
     imgresp = urllib.request.urlopen(URL)
     imgarray = np.array(bytearray(imgresp.read()),dtype=np.uint8)
     img = cv2.imdecode(imgarray,-1)
+    
+  
     img = cv2.resize(img,(800,500))
             
     faces = cascade.detectMultiScale(img)
