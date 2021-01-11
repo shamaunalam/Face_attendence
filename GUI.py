@@ -62,9 +62,7 @@ def backfromstudentregister():
     studentRegisterPage.close()
     facultyDashboard.show()
     
-def gotostudentattendance():
-    facultyDashboard.close()
-    oneStudentAttendnace.show()
+
     
 def capturedata():
     
@@ -134,39 +132,7 @@ class student_gui:
         self.logged_in_name = None
         studentDashboard.close()
         studentLoginPage.show()
-        
-def showAttendanceToFaculty():
-    rollno = oneStudentAttendnace.lineEdit.text()
-    start = datetime.strptime(oneStudentAttendnace.startDate.text(),"%d-%m-%Y").strftime("%d-%m-%y")
-    stop = datetime.strptime(oneStudentAttendnace.endDate.text(),"%d-%m-%Y").strftime("%d-%m-%y")
-    
-    s = Student()
-    df = s.fetch_student_attendence(rollno,start,stop)
-    
-    viewAttendence.tableWidget.setRowCount(0) # initially no rows in table
-    viewAttendence.tableWidget.setColumnCount(len(df.keys())) # add number of columns as per the df
-    viewAttendence.tableWidget.setHorizontalHeaderLabels(df.keys()) # put their labels
-    for i in range(len(list(df.keys()))):
-        # insert the data as row items
-        row_num = 0
-        for data in df[list(df.keys())[i]]:
-            if i == 0:
-                viewAttendence.tableWidget.insertRow(viewAttendence.tableWidget.rowCount())
-                row_num = viewAttendence.tableWidget.rowCount()-1
-            viewAttendence.tableWidget.setItem(row_num , i, QtWidgets.QTableWidgetItem(str(data)))
-            if str(data)=="A":
-                item1 = QtWidgets.QTableWidgetItem()
-                item1.setBackground(QtGui.QColor(255, 153, 153))
-                item1.setText("A")
-                viewAttendence.tableWidget.setItem(row_num, i ,item1)
-            elif str(data)=="P":
-                item1 = QtWidgets.QTableWidgetItem()
-                item1.setBackground(QtGui.QColor(187, 255, 153))
-                item1.setText("P")
-                viewAttendence.tableWidget.setItem(row_num, i ,item1)
-            row_num += 1
-                
-    viewAttendence.show()
+ 
     
 app = QtWidgets.QApplication([])
 
@@ -177,7 +143,7 @@ facultyDashboard = uic.loadUi("Uifiles/faculty_dashboard.ui")
 studentRegisterPage = uic.loadUi("Uifiles/student_register.ui")
 studentDashboard = uic.loadUi("Uifiles/studentDashboard.ui")
 viewAttendence = uic.loadUi('Uifiles/view_attendence.ui')
-oneStudentAttendnace = uic.loadUi('Uifiles/faculy_show_student_attendance.ui')
+
 
 
 
@@ -199,13 +165,12 @@ studentDashboard.viewBut.clicked.connect(sgui.viewattendence)
 
 facultyDashboard.backBut.clicked.connect(backtofacultylogin)
 facultyDashboard.registerStudentBut.clicked.connect(gotostudentregister)
-facultyDashboard.viewAttendenceBut.clicked.connect(gotostudentattendance)
 
 
 studentRegisterPage.backBut.clicked.connect(backfromstudentregister)
 studentRegisterPage.captureBut.clicked.connect(capturedata)
 
-oneStudentAttendnace.viewBut.clicked.connect(showAttendanceToFaculty)
+
 
 app.exec()
 
